@@ -36,8 +36,47 @@ fn fibonacci(n: i32) -> i32 {
 
 We will use the following naive implementation as a starting point to exploring [Rust][rust-lang].
 
+[Rust][rust-lang] is an expression based language. This means that almost every syntactic structure returns a value. In this example we can forgo with all of the `return` keywords.
+
+```rust
+fn fibonacci(n: i32) -> i32 {
+	if n == 0 {
+		0
+	} else if n == 1 {
+		1
+	} else {
+		fibonacci(n - 1) + fibonacci(n - 2)
+	}
+}
+```
+
+Note that we also have to remove the semi-colon, otherwise [Rust][rust-lang] interprets this as an empty expression returning *unit*, which [Rust][rust-lang] catches as an incompatible types error
+
+```rust
+fibonacci(n - 1) + fibonacci(n - 2);
+```
+
+The convoluted `if-else-if-else` construction is at least not very readably or [Rust][rust-lang]-like. Better would be to use [Rust][rust-lang]s `match` keyword.
+
+```rust
+	match n {
+		0 => 0,
+		1 => 1,
+		_ => fibonacci(n - 1) + fibonacci(n - 2)
+	}
+```
+
+We could even collapse the two initial arms using a [`pattern`][pattern].
+
+```rust
+0...1 => n,
+```
+
+And there you have it, [Rust][rust-lang]-like fibonacci numbers
 
 
 [rust-lang]: https://www.rust-lang.org
 [fibonacci]: https://en.wikipedia.org/wiki/Fibonacci_number
 [A000045]: https://oeis.org/A000045
+[match]: https://doc.rust-lang.org/stable/book/match.html
+[pattern]: https://doc.rust-lang.org/stable/book/patterns.html
