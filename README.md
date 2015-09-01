@@ -25,7 +25,19 @@ fn fibonacci(n: i32) -> i32 {
 	} else if n == 1 {
 		return 1;
 	} else {
-		return fibonacci(n - 1) + fibonacci(n -2);
+		return fibonacci(n - 1) + fibonacci(n - 2);
 	}
 }
 ```
+
+## Script
+
+[Rust][rust-lang] has some unique features. One way of getting to know these features is to explore familiar territory in a new light. In this excursion we explore a function to calculate the [Fibonacci][fibonacci] numbers. The Fibonacci numbers is a [sequence][A000045] starting with the numbers `0`, `1`, `1`, `2`, `3` where each new number is the sum of the preceding two numbers.
+
+We will use the following naive implementation as a starting point to exploring [Rust][rust-lang].
+
+
+
+[rust-lang]: https://www.rust-lang.org
+[fibonacci]: https://en.wikipedia.org/wiki/Fibonacci_number
+[A000045]: https://oeis.org/A000045
